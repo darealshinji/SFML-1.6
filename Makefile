@@ -8,7 +8,7 @@ sfml:
 	for l in libsfml-*.so.1.6 ; \
 	do \
 	  L=$$(echo $$l | cut -d. -f1) ;\
-	  ln -s $$l $${L}.so ;\
+	  ln -fs $$l $${L}.so ;\
 	done
 
 sfml-samples:
