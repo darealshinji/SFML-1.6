@@ -28,11 +28,11 @@
 #include <SFML/Graphics/ImageLoader.hpp>
 extern "C"
 {
-    #include <SFML/Graphics/libjpeg/jpeglib.h>
-    #include <SFML/Graphics/libjpeg/jerror.h>
+    #include <jpeglib.h>
+    #include <jerror.h>
 }
-#include <SFML/Graphics/libpng/png.h>
-#include <SFML/Graphics/SOIL/SOIL.h>
+#include <libpng/png.h>
+#include <SOIL/SOIL.h>
 #include <iostream>
 
 
