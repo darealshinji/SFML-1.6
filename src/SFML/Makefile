@@ -17,9 +17,10 @@ endif
 
 export CC         = gcc
 export CPP        = g++
-export CFLAGS     = -W -Wall -pedantic -I../../../include -I../../ $(DEBUGFLAGS) $(BUILDFLAGS)
+export CFLAGS    += -Wall -pedantic $(CPPFLAGS) -I../../../include -I../../ $(DEBUGFLAGS) $(BUILDFLAGS)
+export CXXFLAGS   = $(CFLAGS)
 export CFLAGSEXT  = -I../../../include -I../.. $(DEBUGFLAGS) $(BUILDFLAGS)
-export LDFLAGS    = $(LINKFLAGS)
+export LDFLAGS   += $(LINKFLAGS)
 export LIBPATH    = ../../../lib
 export VERSION    = 1.6
 export CP         = cp

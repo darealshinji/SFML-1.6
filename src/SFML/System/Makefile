@@ -20,7 +20,7 @@ libsfml-system.so: $(OBJ)
 	$(CPP) $(LDFLAGS) -Wl,-soname,$(LIB).$(VERSION) -o $(LIBNAME) $(OBJ) -lpthread
 
 $(OBJ): %.o: %.cpp
-	$(CPP) -o $@ -c $< $(CFLAGS)
+	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 .PHONY: clean mrproper
 
