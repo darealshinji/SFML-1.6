@@ -4,7 +4,7 @@ OBJ  = Window.o
 all: $(EXEC)
 
 window: $(OBJ)
-	$(CC) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-window -lsfml-system -lGLU
+	$(CC) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-window -lsfml-system -lGL -lGLU
 
 %.o: %.cpp
 	$(CC) -o $@ -c $< $(CFLAGS)

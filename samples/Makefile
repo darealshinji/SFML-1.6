@@ -5,10 +5,10 @@ else
     DEBUGFLAGS = -O2 -DNDEBUG
 endif
 
-export CC       = g++
-export CFLAGS   = -W -Wall -ansi -I../../include $(DEBUGFLAGS)
-export LDFLAGS  = 
-export EXECPATH = ../bin
+export CC        = g++
+export CFLAGS    = -W -Wall -ansi -I../../include $(DEBUGFLAGS) $(CXXFLAGS)
+export LDFLAGS  += -L../../lib
+export EXECPATH  = ../bin
 
 all: ftp-sample opengl-sample pong-sample post-fx-sample qt-sample sockets-sample sound-sample sound_capture-sample voip-sample window-sample wxwidgets-sample X11-sample
 
@@ -62,8 +62,8 @@ X11-sample:
 
 .PHONY: clean mrproper
 
-clean:
-	@(cd  ./ftp           && $(MAKE) $@ && \
+make_each_dir = \
+	  cd  ./ftp           && $(MAKE) $@ && \
 	  cd ../opengl        && $(MAKE) $@ && \
 	  cd ../pong          && $(MAKE) $@ && \
 	  cd ../post-fx       && $(MAKE) $@ && \
@@ -74,18 +74,12 @@ clean:
 	  cd ../voip          && $(MAKE) $@ && \
 	  cd ../window        && $(MAKE) $@ && \
 	  cd ../wxwidgets     && $(MAKE) $@ && \
-	  cd ../X11           && $(MAKE) $@)
+	  cd ../X11           && $(MAKE) $@
+
+clean:
+	@($(make_each_dir))
+
+distclean: mrproper
 
 mrproper: clean
-	@(cd  ./ftp           && $(MAKE) $@ && \
-	  cd ../opengl        && $(MAKE) $@ && \
-	  cd ../pong          && $(MAKE) $@ && \
-	  cd ../post-fx       && $(MAKE) $@ && \
-	  cd ../qt            && $(MAKE) $@ && \
-	  cd ../sockets       && $(MAKE) $@ && \
-	  cd ../sound         && $(MAKE) $@ && \
-	  cd ../sound_capture && $(MAKE) $@ && \
-	  cd ../voip          && $(MAKE) $@ && \
-	  cd ../window        && $(MAKE) $@ && \
-	  cd ../wxwidgets     && $(MAKE) $@ && \
-	  cd ../X11           && $(MAKE) $@)
+	@($(make_each_dir))
