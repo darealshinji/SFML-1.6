@@ -37,7 +37,7 @@ sfml-system:
 	@(mkdir -p ../../lib)
 	@(cd ./System && $(MAKE))
 
-sfml-window:
+sfml-window: sfml-system
 	@(mkdir -p ../../lib)
 	@(cd ./Window && $(MAKE))
 
@@ -45,7 +45,7 @@ sfml-network:
 	@(mkdir -p ../../lib)
 	@(cd ./Network && $(MAKE))
 
-sfml-graphics:
+sfml-graphics: sfml-system sfml-window
 	@(mkdir -p ../../lib)
 	@(cd ./Graphics && $(MAKE))
 
