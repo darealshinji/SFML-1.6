@@ -25,7 +25,7 @@ $(OBJ): %.o: %.cpp
 	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 $(OBJVORBIS): %.o: %.c
-	$(CC) -o $@ -c $< $(CFLAGSEXT)
+	$(CC) -o $@ -c $< $(CFLAGS) $(CPPFLAGS) -Wno-unused-value -Wno-unused-variable -Wno-unused-but-set-variable -Wno-maybe-uninitialized
 
 .PHONY: clean mrproper
 
