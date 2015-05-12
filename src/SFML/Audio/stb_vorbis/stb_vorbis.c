@@ -1145,9 +1145,10 @@ static int next_segment(vorb *f)
 
 static int get8_packet_raw(vorb *f)
 {
-   if (!f->bytes_in_seg)
+   if (!f->bytes_in_seg) {
       if (f->last_seg) return EOP;
       else if (!next_segment(f)) return EOP;
+   }
    assert(f->bytes_in_seg > 0);
    --f->bytes_in_seg;
    ++f->packet_bytes;
@@ -1198,6 +1199,7 @@ static uint32 get_bits(vorb *f, int n)
    return z;
 }
 
+/*
 static int32 get_bits_signed(vorb *f, int n)
 {
    uint32 z = get_bits(f, n);
@@ -1205,6 +1207,7 @@ static int32 get_bits_signed(vorb *f, int n)
       z += ~((1 << n) - 1);
    return (int32) z;
 }
+*/
 
 // @OPTIMIZE: primary accumulator for huffman
 // expand the buffer to as many bits as possible without reading off end of packet
@@ -1229,7 +1232,7 @@ enum
 {
    VORBIS_packet_id = 1,
    VORBIS_packet_comment = 3,
-   VORBIS_packet_setup = 5,
+   VORBIS_packet_setup = 5
 };
 
 static int codebook_decode_scalar_raw(vorb *f, Codebook *c)
@@ -1289,6 +1292,7 @@ static int codebook_decode_scalar_raw(vorb *f, Codebook *c)
    return -1;
 }
 
+/*
 static int codebook_decode_scalar(vorb *f, Codebook *c)
 {
    int i;
@@ -1305,6 +1309,7 @@ static int codebook_decode_scalar(vorb *f, Codebook *c)
    }
    return codebook_decode_scalar_raw(f,c);
 }
+*/
 
 #ifndef STB_VORBIS_NO_INLINE_DECODE
 
@@ -4149,13 +4154,13 @@ static uint32 vorbis_find_page(stb_vorbis *f, uint32 *end, uint32 *last)
                // might decrease the chance of an invalid decode by
                // another 2^32, not worth it since it would hose those
                // invalid-but-useful files?
-               if (end)
-                  *end = stb_vorbis_get_file_offset(f);
-               if (last)
+               if (end) *end = stb_vorbis_get_file_offset(f);
+               if (last) {
                   if (header[5] & 0x04)
                      *last = 1;
                   else
                      *last = 0;
+               }
                set_file_offset(f, retry_loc-1);
                return 1;
             }
