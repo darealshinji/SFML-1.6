@@ -237,7 +237,7 @@ FT_Error FontLoader::CreateBitmapFont(FT_Face FontFace, unsigned int CharSize, c
 
         // Compute the top coordinate
         Top = Tops[Left];
-        for (int x = 0; x < Bitmap.width + 1; ++x)
+        for (unsigned int x = 0; x < Bitmap.width + 1; ++x)
             Top = std::max(Top, Tops[Left + x]);
         Top++;
 
@@ -260,9 +260,9 @@ FT_Error FontLoader::CreateBitmapFont(FT_Face FontFace, unsigned int CharSize, c
 
         // Draw the glyph into our bitmap font
         const Uint8* Pixels = Bitmap.buffer;
-        for (int y = 0; y < Bitmap.rows; ++y)
+        for (unsigned int y = 0; y < Bitmap.rows; ++y)
         {
-            for (int x = 0; x < Bitmap.width; ++x)
+            for (unsigned int x = 0; x < Bitmap.width; ++x)
             {
                 std::size_t Index = x + Left + 1 + (y + Top + 1) * TexWidth;
                 GlyphsBuffer[Index * 4 + 0] = 255;
@@ -274,7 +274,7 @@ FT_Error FontLoader::CreateBitmapFont(FT_Face FontFace, unsigned int CharSize, c
         }
 
         // Update the rendering coordinates
-        for (int x = 0; x < Bitmap.width + 1; ++x)
+        for (unsigned int x = 0; x < Bitmap.width + 1; ++x)
             Tops[Left + x] = Top + Bitmap.rows;
         Left += Bitmap.width + 1;
         if (Top + Bitmap.rows > MaxHeight)
