@@ -4,10 +4,10 @@ OBJ  = Window.o
 all: $(EXEC)
 
 window: $(OBJ)
-	$(CC) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-window -lsfml-system -lGLU
+	$(CXX) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-window -lsfml-system -lGLU -lGL
 
 %.o: %.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 .PHONY: clean mrproper
 

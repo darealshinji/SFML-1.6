@@ -4,10 +4,10 @@ OBJ  = Sockets.o TCP.o UDP.o
 all: $(EXEC)
 
 sockets: $(OBJ)
-	$(CC) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-network -lsfml-system
+	$(CXX) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-network -lsfml-system
 
 %.o: %.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 .PHONY: clean mrproper
 

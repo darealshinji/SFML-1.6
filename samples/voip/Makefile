@@ -4,10 +4,10 @@ OBJ  = VoIP.o Client.o Server.o
 all: $(EXEC)
 
 voip: $(OBJ)
-	$(CC) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-audio -lsfml-network -lsfml-system
+	$(CXX) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-audio -lsfml-network -lsfml-system
 
 %.o: %.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 .PHONY: clean mrproper
 

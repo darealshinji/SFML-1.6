@@ -4,10 +4,10 @@ OBJ  = PostFX.o
 all: $(EXEC)
 
 post-fx: $(OBJ)
-	$(CC) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-graphics -lsfml-window -lsfml-system
+	$(CXX) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-graphics -lsfml-window -lsfml-system
 
 %.o: %.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 .PHONY: clean mrproper
 

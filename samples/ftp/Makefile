@@ -4,10 +4,10 @@ OBJ  = Ftp.o
 all: $(EXEC)
 
 ftp: $(OBJ)
-	$(CC) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-network -lsfml-system
+	$(CXX) $(LDFLAGS) -o $(EXECPATH)/$@ $(OBJ) -lsfml-network -lsfml-system
 
 %.o: %.cpp
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CXX) -o $@ -c $< $(CXXFLAGS)
 
 .PHONY: clean mrproper
 

@@ -5,10 +5,10 @@ else
     DEBUGFLAGS = -O2 -DNDEBUG
 endif
 
-export CC       = g++
-export CFLAGS   = -W -Wall -ansi -I../../include $(DEBUGFLAGS)
-export LDFLAGS  = 
-export EXECPATH = ../bin
+export CXX       = g++
+export CXXFLAGS += -W -Wall -ansi -I../../include $(DEBUGFLAGS)
+export LDFLAGS  += -L../../lib
+export EXECPATH  = ../bin
 
 all: ftp-sample opengl-sample pong-sample post-fx-sample qt-sample sockets-sample sound-sample sound_capture-sample voip-sample window-sample wxwidgets-sample X11-sample
 
