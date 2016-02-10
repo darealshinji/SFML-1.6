@@ -1,0 +1,19 @@
+# Libraries
+/lib/
+
+# Sample binaries
+/samples/bin/X11
+/samples/bin/ftp
+/samples/bin/opengl
+/samples/bin/pong
+/samples/bin/post-fx
+/samples/bin/qt
+/samples/bin/sockets
+/samples/bin/sound
+/samples/bin/sound_capture
+/samples/bin/voip
+/samples/bin/window
+/samples/bin/wxwidgets
+
+# Object code
+*.o
