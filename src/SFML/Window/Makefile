@@ -1,6 +1,5 @@
 SRC     = $(wildcard *.cpp ./Linux/*.cpp)
 OBJ     = $(SRC:.cpp=.o)
-OBJGLEW = $(SRCGLEW:.c=.o)
 
 ifeq ($(STATIC), yes)
     LIB     = libsfml-window-s.a
@@ -18,7 +17,7 @@ libsfml-window-s.a: $(OBJ)
 	$(AR) $(ARFLAGS) $(LIBNAME) $(OBJ)
 
 libsfml-window.so: $(OBJ)
-	$(CPP) $(LDFLAGS) -Wl,-soname,$(LIB).$(VERSION) -o $(LIBNAME) $(OBJ) $(OBJGLEW) -lX11 -lXrandr -lGL $(LIBPATH)/libsfml-system.so.$(VERSION)
+	$(CPP) $(LDFLAGS) -Wl,-soname,$(LIB).$(VERSION) -o $(LIBNAME) $(OBJ) -lGLEW -lX11 -lXrandr -lGL $(LIBPATH)/libsfml-system.so.$(VERSION)
 
 $(OBJ): %.o: %.cpp
 	$(CPP) -o $@ -c $< $(CFLAGS)

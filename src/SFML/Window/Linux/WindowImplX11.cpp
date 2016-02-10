@@ -27,8 +27,8 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/Window/WindowStyle.hpp> // important to be included first (conflict with None)
 #include <SFML/Window/Linux/WindowImplX11.hpp>
-#include <SFML/Window/glext/glxext.h>
-#include <SFML/Window/glext/glext.h>
+#include <GL/glxext.h>
+#include <GL/glext.h>
 #include <SFML/System/Unicode.hpp>
 #include <X11/keysym.h>
 #include <X11/extensions/Xrandr.h>

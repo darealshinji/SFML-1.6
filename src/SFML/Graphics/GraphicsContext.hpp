@@ -30,7 +30,7 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/Config.hpp>
 #include <SFML/System/NonCopyable.hpp>
-#include <SFML/Graphics/GLEW/glew.h>
+#include <GL/glew.h>
 #include <iostream>
 #include <string>
 
