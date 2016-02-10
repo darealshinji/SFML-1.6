@@ -36,13 +36,13 @@ all: sfml-system sfml-window sfml-network sfml-graphics sfml-audio
 sfml-system:
 	@(cd ./System && $(MAKE))
 
-sfml-window:
+sfml-window: sfml-system
 	@(cd ./Window && $(MAKE))
 
 sfml-network:
 	@(cd ./Network && $(MAKE))
 
-sfml-graphics:
+sfml-graphics: sfml-system sfml-window
 	@(cd ./Graphics && $(MAKE))
 
 sfml-audio:
