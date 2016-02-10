@@ -17,10 +17,10 @@ libsfml-graphics-s.a: $(OBJ) $(OBJGLEW) $(OBJJPEG) $(OBJPNG) $(OBJSOIL) $(OBJZLI
 	$(AR) $(ARFLAGS) $(LIBNAME) $(OBJ) $(OBJGLEW) $(OBJJPEG) $(OBJPNG) $(OBJSOIL) $(OBJZLIB)
 
 libsfml-graphics.so: $(OBJ)
-	$(CPP) $(LDFLAGS) -Wl,-soname,$(LIB).$(VERSION) -o $(LIBNAME) $(OBJ) -lGLEW -ljpeg -lpng -lSOIL -lfreetype $(LIBPATH)/libsfml-system.so.$(VERSION) $(LIBPATH)/libsfml-window.so.$(VERSION) -lGL
+	$(CXX) $(LDFLAGS) -Wl,-soname,$(LIB).$(VERSION) -o $(LIBNAME) $(OBJ) -lGLEW -ljpeg -lpng -lSOIL -lfreetype $(LIBPATH)/libsfml-system.so.$(VERSION) $(LIBPATH)/libsfml-window.so.$(VERSION) -lGL
 
 $(OBJ): %.o: %.cpp
-	$(CPP) -o $@ -c $< $(CFLAGS) -I/usr/include/freetype2
+	$(CXX) -o $@ -c $< $(CXXFLAGS) -I/usr/include/freetype2
 
 .PHONY: clean mrproper
 
